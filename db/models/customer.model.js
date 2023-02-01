@@ -32,6 +32,7 @@ const CustomerSchema = {
     userId: {
         field: 'user_id',
         allowNull: false,
+        unique: true,
         type: DataTypes.INTEGER,
         references: {
             model: USER_TABLE,
@@ -50,11 +51,15 @@ class Customer extends Model {
     static config(sequelize) {
         return {
             sequelize,
-            tableName:CUSTOMER_TABLE,
-            modelName:'Customer',
-            timestamps:false
+            tableName: CUSTOMER_TABLE,
+            modelName: 'Customer',
+            timestamps: false
         };
     }
 }
 
-module.exports = { Customer, CustomerSchema, CUSTOMER_TABLE };
+module.exports = {
+    Customer,
+    CustomerSchema,
+    CUSTOMER_TABLE
+};
